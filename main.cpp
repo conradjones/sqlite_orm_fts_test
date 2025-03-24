@@ -1,5 +1,5 @@
 #include <iostream>
-#include "sqlite_orm/sqlite_orm.h"
+#include "sqlite_orm.h"
 
 struct NormalTable {
     int id;
@@ -25,7 +25,10 @@ inline auto initStorage(const std::string &databaseFilePath) {
             "search_table",
             sqlite_orm::using_fts5(
                 sqlite_orm::make_column("text", &SearchTable::text),
-                sqlite_orm::make_column("normal_table_id", &SearchTable::normal_table_id)))
+                sqlite_orm::make_column("normal_table_id", &SearchTable::normal_table_id)
+
+                , sqlite_orm::tokenize("trigram")
+            ))
     );
 }
 

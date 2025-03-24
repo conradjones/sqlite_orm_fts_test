@@ -21,7 +21,6 @@ class TestMe(ConanFile):
         channel = "turboit"
 
         self.requires("sqlite3/3.45.0")
-        self.requires("sqlite_orm/1.9.1")
 
 def generate(self):
         tc = CMakeToolchain(self)
